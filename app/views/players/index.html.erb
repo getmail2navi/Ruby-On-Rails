@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<h1>There are a total <%= @players.count %> Players in  our teams</h1>
+<table>
+	<thead>
+		<td><button type="button" class="btn btn-primary">First Name</button></td>
+		<td><button type="button" class="btn btn-primary">Last Name</button></td>
+		<td><button type="button" class="btn btn-warning">Action</button></td>
+		<td><button type="button" class="btn btn-danger">Delete</button></td>
+		<td><button type="button" class="btn btn-success">Edit</button></td>
+		<td><button type="button" class="btn btn-success">Player Imaage</button></td>
+	</thead>
+	<tbody>
+		<% @players.each do |player| %>
+		<tr>
+		<td><%= player.first_name %></td>
+		<td><%= player.last_name %></td>
+		<td><a href="/players/<%= player.id %>">Show</a></td>
+		
+		<td><a href="/players/<%= player.id %>" data-method="delete" data-confirm="are you sure?">Delete</a></td>
+		<td><a href="/players/<%= player.id %>/edit">Player Edit</a></td>
+		
+	</tr>
+	<% end %>
+
+	</tbody>
+</table>
+	<form method="get" action="player/new">
+    <button type="get">Add Player</button>
+</form>
+
+</div>
+
+</body>
+</html>
